@@ -1,8 +1,6 @@
 # Advent Of Code sub y{2020}
 
-My JavaScript solutions to 2020 Advent Of Code puzzles.
-
-![Xmas Lights](/assets/lights.gif)
+My JavaScript solutions to 2020 Advent Of Code puzzles. This repository
 
 To solve a part for a specific day
 
@@ -16,5 +14,6 @@ To solve for all days
 
 ```npm run solve <day>```
 
-### Link
+![Xmas Lights](/assets/lights.gif)
+
 - [2020 event page](https://adventofcode.com/2020/)
