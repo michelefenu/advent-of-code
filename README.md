@@ -1,2 +1,3 @@
-# advent-of-code-2020
-My solutions to 2020 Advent Of Code puzzles
+# Advent Of Code sub y{2020}
+
+My solutions (attempts) to 2020 Advent Of Code puzzles, written in plain JavaScript.
