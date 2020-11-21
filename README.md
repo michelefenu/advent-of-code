@@ -4,4 +4,3 @@ My solutions (attempts) to 2020 Advent Of Code puzzles, written in plain JavaScr
 
 ### Link
 - [2020 event page](https://adventofcode.com/2020/)
-- [My Leaderboard](https://adventofcode.com/2020/leaderboard/private/view/286401)
