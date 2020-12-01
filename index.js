@@ -10,6 +10,7 @@ if (typeof puzzleDay !== 'number' || isNaN(puzzleDay)) {
 
 if (typeof puzzlePart !== 'number' || isNaN(puzzlePart)) {
   console.log(chalk.green('No part specified, solving for both parts...'))
+  console.log(chalk.white('To solve a single part type npm run solve -- 2 1'))
 }
 
 for (let day of puzzleDay && [puzzleDay] || [...Array(26).keys()].splice(1)) {
