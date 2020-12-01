@@ -17,6 +17,7 @@ for (let day of puzzleDay && [puzzleDay] || [...Array(26).keys()].splice(1)) {
     const input = fs
       .readFileSync(`puzzles/day-${day.toString().padStart(2, '0')}/input.txt`)
       .toString()
+      .replace(/\r/g, '')
       .split('\n')
 
     const solver = require(`./puzzles/day-${day.toString().padStart(2, '0')}/part${part}`)
