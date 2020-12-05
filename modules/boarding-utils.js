@@ -1,6 +1,8 @@
 /**
  * 
  * @param {string} boardingPass 
+ * @param {number} planeRows number of rows in the plane
+ * @param {number} planeCols number of cols (seats) in each line of the plane
  */
 const getSeatID = (boardingPass, planeRows, planeCols) => {
   // |       rows        |  cols  |
