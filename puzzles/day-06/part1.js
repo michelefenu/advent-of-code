@@ -1,5 +1,9 @@
+const formUtils = require('../../modules/form-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+  const yesAnswers = formUtils.getTotalYesAnswers(input)
+  
+  return yesAnswers
 }
 
 module.exports = { solve }
