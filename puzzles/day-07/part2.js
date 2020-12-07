@@ -1,5 +1,10 @@
+const luggageUtils = require('../../modules/luggage-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+  const luggagesMap = luggageUtils.getLuggagesMap(input)
+  const containedBags = luggageUtils.getNumberOfContainedBags(luggagesMap, 'shiny gold')
+  
+  return containedBags
 }
 
 module.exports = { solve }
