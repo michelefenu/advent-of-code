@@ -1,5 +1,7 @@
+const consoleEmulator = require('../../modules/console-emulator')
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return consoleEmulator.executeProgram(input).accumulator
 }
 
 module.exports = { solve }
