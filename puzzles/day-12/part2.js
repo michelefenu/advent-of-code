@@ -1,5 +1,7 @@
+const navigationUtils = require('../../modules/navigation-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+ return navigationUtils.getManhattanDistanceNewInstructions(input)
 }
 
 module.exports = { solve }
