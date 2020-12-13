@@ -1,5 +1,9 @@
+const autobusUtils = require('../../modules/autobus-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+  const busIds = input[1].split(',').map(x => x!== 'x' ? parseInt(x) : x)
+
+ return autobusUtils.solveContest(busIds)
 }
 
 module.exports = { solve }
