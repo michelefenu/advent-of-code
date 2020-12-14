@@ -1,5 +1,7 @@
+const dockingUtils = require('../../modules/docking-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+ return dockingUtils.boot(input)
 }
 
 module.exports = { solve }
