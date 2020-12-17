@@ -1,5 +1,8 @@
+const cubeUtils = require('../../modules/cube-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+
+ return cubeUtils.getActiveCubes4D(input, 6)
 }
 
 module.exports = { solve }
