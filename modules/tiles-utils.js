@@ -11,39 +11,7 @@ const findBordersIds = (tiles) => {
 }
 
 const buildPhoto = (tiles) => {
-  for (const [index, tile] of tiles) {
-    tile.found = true
-    for (let [seachIndex, searchTile] of tiles) {
-      if (index === seachIndex) { continue }
-
-      // check top
-      const topBorder = tile.borders[0]
-      let i = 0
-      while (i < 8) {
-        if (searchTile[searchTile.length - 1] === topBorder) {
-
-          break
-        }
-        tiles[searchIndex] = flipH(tiles[searchIndex])
-        if (searchTile[searchTile.length - 1] === topBorder) {
-          tile.neighbors = tile.neighbors ? tile.neighbors.push({pos: 'top', tileId: searchTile.id}) || [{pos: 'top', tileId: searchTile.id}]
-          break
-        }
-        i++
-      }
-
-      // check right
-      const rightBorder = tile.borders[0]
-
-      // check bottom
-      const bottomBorder = tile.borders[0]
-
-
-      // check left
-      const leftBorder = tile.borders[0]
-
-    }
-  }
+ // Done in matlab
 }
 
 const findMatchingTile = (id, border, tiles) => {
