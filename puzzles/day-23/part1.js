@@ -1,5 +1,9 @@
+const cupStack = require('../../modules/cup-stack.js')
+
 function solve(input) {
-  throw 'Not solved, yet'
+  const cups = input[0].split('').map(x => parseInt(x))
+
+  return cupStack.runSimulation(cups, 100)
 }
 
 module.exports = { solve }
