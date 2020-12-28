@@ -149,7 +149,8 @@ const buildPhoto = (tiles) => {
   const snakeHashes = snakePattern.join('').split('').filter(x => x === '#').length * seaMonsters
 
   const totalHashes = puzzle.join('').split('').filter(x => x === '#').length
-console.log(totalHashes - snakeHashes)
+ 
+ return totalHashes - snakeHashes
 }
 
 const findSeaMonsters = (snakePattern, puzzle) => {

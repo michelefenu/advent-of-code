@@ -12,7 +12,7 @@ function solve(input) {
       }
     ))
 
-  console.log(tilesUtils.buildPhoto(tiles))
+  return tilesUtils.buildPhoto(tiles)
 }
 
 module.exports = { solve }
