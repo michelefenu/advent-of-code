@@ -12,7 +12,7 @@ function solve(input) {
       }
     ))
 
-  //console.log(tilesUtils.buildPhoto(tiles))
+  console.log(tilesUtils.buildPhoto(tiles))
 }
 
 module.exports = { solve }
