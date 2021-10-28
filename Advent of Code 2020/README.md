@@ -19,4 +19,4 @@ To solve all puzzles
 ```npm run solve```
 
 
-![Xmas Lights](/assets/lights.gif)
+![Xmas Lights](./assets/lights.gif)
