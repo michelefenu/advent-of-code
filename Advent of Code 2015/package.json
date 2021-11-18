@@ -1,7 +1,7 @@
 {
-  "name": "advent-of-code-2020",
+  "name": "advent-of-code-2015",
   "version": "1.0.0",
-  "description": "My solutions to Advent Of Code 2020 puzzles",
+  "description": "My solutions to Advent Of Code 2015 puzzles",
   "main": "index.js",
   "scripts": {
     "solve": "node index.js"
