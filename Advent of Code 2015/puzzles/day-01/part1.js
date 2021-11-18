@@ -1,5 +1,8 @@
+const floorUtils = require('../../modules/floor-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+  const directions = input[0].split('');
+  return floorUtils.getFloor(directions);
 }
 
 module.exports = { solve }
