@@ -1,5 +1,7 @@
+const adventCoin = require('../../modules/advent-coin');
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return adventCoin.mine(input, 5);
 }
 
 module.exports = { solve }
