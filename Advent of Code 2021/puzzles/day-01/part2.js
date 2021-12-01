@@ -1,5 +1,7 @@
+const sonarUtils = require('../../modules/sonar-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return sonarUtils.countSlidingIncreased(input.map(Number));
 }
 
 module.exports = { solve }
