@@ -1,5 +1,9 @@
+const navigationUtils = require('../../modules/navigation-utils');
+
 function solve(input) {
-  throw 'Not solved, yet'
+  const lastPosition = navigationUtils.navigate(input);
+
+  return lastPosition.x * lastPosition.y;
 }
 
 module.exports = { solve }
