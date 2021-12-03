@@ -1,5 +1,9 @@
+const diagnosticUtils = require('../../modules/diagnostic-utils');
+
 function solve(input) {
-  throw 'Not solved, yet'
+  const {gammaRate, epsilonRate} = diagnosticUtils.getSubmarineData(input);
+
+  return parseInt(gammaRate, 2) * parseInt(epsilonRate, 2)
 }
 
 module.exports = { solve }

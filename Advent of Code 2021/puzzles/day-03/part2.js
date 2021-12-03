@@ -1,5 +1,7 @@
+const diagnosticUtils = require('../../modules/diagnostic-utils');
+
 function solve(input) {
-  throw 'Not solved, yet'
+   return diagnosticUtils.getLifeSupportRating(input);
 }
 
 module.exports = { solve }
