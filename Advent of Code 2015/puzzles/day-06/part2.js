@@ -1,5 +1,7 @@
+const lightsUtils = require('../../modules/lights-utils')
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return lightsUtils.manageBrightness(input)
 }
 
 module.exports = { solve }
