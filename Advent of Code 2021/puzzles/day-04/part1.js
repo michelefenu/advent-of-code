@@ -1,5 +1,7 @@
+const bingoUtils = require('../../modules/bingo-utils');
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return bingoUtils.getWinnerScore(input);
 }
 
 module.exports = { solve }
