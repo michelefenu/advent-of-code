@@ -1,5 +1,7 @@
+const lightfishUtils = require('../../modules/lightfish-utils');
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return lightfishUtils.simulate(input[0], 80);
 }
 
 module.exports = { solve }
