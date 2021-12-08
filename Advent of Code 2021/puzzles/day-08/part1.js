@@ -1,5 +1,7 @@
+const sevenSegmentsUtils = require('../../modules/seven-segments-utils');
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return sevenSegmentsUtils.getUniqueOutputValues(input);
 }
 
 module.exports = { solve }
