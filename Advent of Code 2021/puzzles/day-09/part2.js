@@ -1,5 +1,7 @@
+const smokeUtils = require("../../modules/smoke-utils");
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return smokeUtils.calculateBasinsSizes(input);
 }
 
-module.exports = { solve }
+module.exports = { solve };
