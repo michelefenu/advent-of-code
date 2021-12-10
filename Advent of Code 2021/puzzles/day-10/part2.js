@@ -1,5 +1,7 @@
+const navSubsystemUtils = require("../../modules/nav-subsystem-utils");
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return navSubsystemUtils.fixIncomplete(input);
 }
 
-module.exports = { solve }
+module.exports = { solve };

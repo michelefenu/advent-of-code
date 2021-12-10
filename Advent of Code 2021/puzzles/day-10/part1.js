@@ -1,5 +1,7 @@
+const navSubsystemUtils = require("../../modules/nav-subsystem-utils");
+
 function solve(input) {
-  throw 'Not solved, yet'
+  return navSubsystemUtils.removeCorruptedLines(input).errorScore;
 }
 
-module.exports = { solve }
+module.exports = { solve };
