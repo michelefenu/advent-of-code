@@ -1,4 +1,4 @@
-const day1 = require('../../modules/day1')
+const day1 = require('../../modules/day1');
 
 function solve(input) {
   
