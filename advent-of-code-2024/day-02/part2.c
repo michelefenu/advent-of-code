@@ -1,3 +1,4 @@
+// Brute force is the way
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
