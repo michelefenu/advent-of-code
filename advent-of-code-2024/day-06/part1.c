@@ -33,23 +33,24 @@ int main(void) {
 
   char** board = malloc(rows*sizeof(char*));  
   for(int i=0; i<rows; i++) {
-    fgets(buf, sizeof(buf), fp);
-    board[i] = malloc(cols*sizeof(char));
-    int k = 0;
-    while(buf[k] != '\n') { 
-      board[i][k] = buf[k];
-      k++; 
-    }
+    if(fgets(buf, sizeof(buf), fp) != NULL) {
+    	board[i] = malloc(cols*sizeof(char));
+    	int k = 0;
+    	while(buf[k] != '\n') { 
+      	board[i][k] = buf[k];
+      	k++; 
+    	}
+		}	
   }
 
-  int guard_x;
-  int guard_y;
+  int guard_x = -1;
+  int guard_y = -1;
   for(int i=0; i<rows; i++) {
     for(int j=0; j<cols; j++) {
       printf("%c", board[i][j]);
       if(board[i][j] == '^') {
-	guard_x = i;
-	guard_y = j;
+				guard_x = i;
+				guard_y = j;
       }
     }
     printf("\n");
@@ -79,11 +80,13 @@ int main(void) {
     for(int j=0; j<cols; j++) {
       printf("%c", board[i][j]);
       if(board[i][j] == 'X') {
-	visited_cells++;
+				visited_cells++;
       }
     }
     printf("\n");
   }
+
+	free(board);
 
   printf("Total visited cells: %d", visited_cells);  
 }
