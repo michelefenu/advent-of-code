@@ -1,4 +1,4 @@
-/*
+/* 
  * To run redirect input when executing program
  * ./part_2 < input.txt
  * 
@@ -11,6 +11,17 @@
  * 4: if read [0-9] -> save to 1st operand and 4, if read comma -> 5 else 0
  * 5: if read [0-9] -> save to 2nd operand and 5, if read ) -> 6 else 0
  * 6: multiply 1st and 2nd operand, add to total and 0. If m is read state = 1;
+ *
+ *
+ * Do & Donts
+ * 0: read d -> 10 else 0
+ * 10 read o -> 11 else 0
+ * 11 read ( -> 12, read n -> 20, else 0
+ * 12 read ) -> enable multiplier -> 0
+ * 20 read ' -> 21 else 0
+ * 21 read t -> 22 else 0
+ * 22 read ( -> 23 else 0
+ * 23 read ) -> disable multiplier -> 0
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,6 +37,7 @@ int get_magnitude(int operand) {
 }
 
 int main(void) {
+  int mult_enabled = 1;
   int result = 0;
   int o1;
   int o2;
@@ -43,6 +55,8 @@ int main(void) {
 	  o1 = 0;
           o2 = 0;
 	  if(input[i] == 'm') { state = 1; }
+	  else if(input[i] == 'd') { state = 10; }
+	  else { state = 0; }
 	  break;
 	case 1:
 	  if(input[i] == 'u') { state = 2; }
@@ -85,19 +99,58 @@ int main(void) {
 	  } else { state = 0; }
 	  break;
 	case 6:
-	  result = result + o1 * o2;
+	  if(mult_enabled) {
+	    result = result + o1 * o2;
+	  }
 	  if(input[i] == 'm') {
 	    o1 = 0;
 	    o2 = 0;
 	    state = 1;
+	  } else if(input[i] == 'd') {
+	    state = 10;
 	  } else {
 	    state = 0;
 	  }
 	  break;
-	}      
+	case 10:
+	  if(input[i] == 'o') { state = 11; }
+	  else { state = 0; }
+	  break;
+	case 11:
+	  if(input[i] == '(') { state = 12; }
+	  else if(input[i] == 'n') { state = 20; }
+	  else { state = 0; }
+	  break;
+	case 12:
+	  if(input[i] == ')') {  
+	    mult_enabled = 1; 
+	    printf("\n=== MULT ENABLED ===\n");
+	  } 
+	  state = 0;
+	  break;
+	case 20:
+	  if(input[i] == '\'') { state = 21; }
+	  else { state = 0; }
+	  break;
+	case 21:
+	  if(input[i] == 't') { state = 22; }
+	  else { state = 0; }
+	  break;
+	case 22:
+	  if(input[i] == '(') { state = 23; }
+	  else { state = 0; }
+	  break;
+	case 23:
+	  if(input[i] == ')') { 
+	    mult_enabled = 0;
+	    printf("\n=== MULT DISABLED ===\n");
+	  } 
+	  state = 0;
+	  break;
+      }      
       printf("Char: %c      State%d\n", input[i], state);
-      }
     }
+  }
   printf("The result is %d", result);
 }
 
