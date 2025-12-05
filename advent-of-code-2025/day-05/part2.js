@@ -9,20 +9,21 @@ const ranges = data
   .filter(x => x.includes('-'))
   .map(x => ({min: +x.split('-')[0], max: +x.split('-')[1]}));
 
-let cleanedRanges = [...ranges];
+let cleanedRanges = [ranges[0]];
 
 
-for(let range of ranges) {
   let newCleaned = cleanedRanges;
+for(let range of ranges) {
   for(let cleanedRange of cleanedRanges) {
 //    console.log(range, cleanedRange);
   //  console.log(cleanedRanges);
     // Range incluso in un altro
-      console.log(cleanedRange, range);
+    console.log('---');
+    console.log(range, cleanedRange);
+    if(cleanedRange.min === range.min && cleanedRange.max === range.max) continue;
     if(cleanedRange.min < range.min && cleanedRange.max > range.max) {
-      newCleaned = newCleaned.filter(x => x.min !== cleanedRange.min && x.max !== cleanedRange.max);
       console.log('Incluso in altro');
-      break;
+      newCleaned = newCleaned.filter(x => x.min !== range.min && x.max !== range.max);
       // Altro range incluso in quello corrente
     } else if(cleanedRange.min > range.min && cleanedRange.max < range.max) {
       console.log('Incluso in corrente');
@@ -45,9 +46,9 @@ for(let range of ranges) {
       range.max = cleanedRange.max;
       !newCleaned.includes(range) && newCleaned.push(range);
     }
+  }
     cleanedRanges = [...newCleaned];
     console.log('Res: ', cleanedRanges);
-  }
 }
 
 //console.log(cleanedRanges);
