@@ -10,16 +10,19 @@ const banks = data;
 
 
 function findMaxJoltage(bank) {
-  let max = 0;
-  // Build pair of numbers and calculate the max
-  for(let i=0; i<bank.length-1; i++) {
-    for(let j=i+1; j<bank.length; j++) {
-      const num = Number(bank[i]+bank[j]);
-      if(num > max) max = num;
+  const stack = [];
+  let drops = bank.length-12;
+
+  // Use a monotonic stack to find the max
+  for(let digit of bank.split('').map(x => +x)) {
+    while(drops > 0 && stack.length !== 0 && stack[stack.length-1] < digit ) {
+      stack.pop();
+      drops--;
     }
+    stack.push(digit);
   }
-  console.log(bank, max);
-  return max;
+
+  return +stack.join('').slice(0,12);
 }
 
 let totalJoltage = 0;
