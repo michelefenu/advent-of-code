@@ -1,58 +1,60 @@
 const fs = require('fs');
 
-const data = fs.readFileSync('input.txt', 'utf-8')
+const data = fs.readFileSync('inputc.txt', 'utf-8')
   .split('\n')
   .filter(x => !!x);
 
 // Solution
-const ranges = data
-  .filter(x => x.includes('-'))
-  .map(x => ({min: +x.split('-')[0], max: +x.split('-')[1]}));
+let ranges = data.filter(x => x.includes('-'));
 
-let cleanedRanges = [ranges[0]];
+// Remove duplicate ranges
+ranges = [...new Set(ranges)].map(x => ({min: +x.split('-')[0], max: +x.split('-')[1]}));
+
+let changed = true;
 
 
-  let newCleaned = cleanedRanges;
-for(let range of ranges) {
-  for(let cleanedRange of cleanedRanges) {
-//    console.log(range, cleanedRange);
-  //  console.log(cleanedRanges);
-    // Range incluso in un altro
-    console.log('---');
-    console.log(range, cleanedRange);
-    if(cleanedRange.min === range.min && cleanedRange.max === range.max) continue;
-    if(cleanedRange.min < range.min && cleanedRange.max > range.max) {
-      console.log('Incluso in altro');
-      newCleaned = newCleaned.filter(x => x.min !== range.min && x.max !== range.max);
-      // Altro range incluso in quello corrente
-    } else if(cleanedRange.min > range.min && cleanedRange.max < range.max) {
-      console.log('Incluso in corrente');
-      newCleaned = newCleaned.filter(x => x.min !== cleanedRange.min && x.max !== cleanedRange.max);
-      !newCleaned.includes(range) && newCleaned.push(range);
-      // Range disgiunti
-    } else if(cleanedRange.min > range.max || cleanedRange.max < range.min) {
-      console.log('Disgiunti');
-      !newCleaned.includes(range) && newCleaned.push(range);
-      // Min compreso in altro range
-    } else if(cleanedRange.min <= range.min && cleanedRange.max >= range.min) {
-      console.log('Min compreso in altro range');
-      newCleaned = newCleaned.filter(x => x.min !== cleanedRange.min && x.max !== cleanedRange.max);
-      range.min = cleanedRange.min;
-      !newCleaned.includes(range) && newCleaned.push(range);
-      // Max compreso in altro range
-    } else if(cleanedRange.min <= range.max && cleanedRange.max >= range.max) {
-      console.log('Max compreso in altro range');
-      newCleaned = newCleaned.filter(x => x.min !== cleanedRange.min && x.max !== cleanedRange.max);
-      range.max = cleanedRange.max;
-      !newCleaned.includes(range) && newCleaned.push(range);
+while(changed) {
+  changed = false;
+  console.log(ranges);
+  for(let range of ranges) {
+    for(let rangeCheck of ranges) {
+
+      // Itself or deleted
+      if(range.deleted || rangeCheck.deleted || rangeCheck.min === range.min && rangeCheck.max === range.max) {
+
+      }
+      // Range incluso in un altro
+      else if(rangeCheck.min <= range.min && rangeCheck.max >= range.max) {
+        range.deleted = true;
+        changed = true;
+        break;
+        // Altro range incluso in quello corrente
+      } else if(rangeCheck.min >= range.min && rangeCheck.max <= range.max) {
+        rangeCheck.deleted = true;
+        changed = true;
+        // Range disgiunti
+      } else if(rangeCheck.min > range.max || rangeCheck.max < range.min) {
+        // Min compreso in altro range
+      } else if(rangeCheck.min <= range.min && rangeCheck.max >= range.min) {
+        range.min = rangeCheck.min;
+        rangeCheck.deleted = true;
+        changed = true;
+        // Max compreso in altro range
+      } else if(rangeCheck.min <= range.max && rangeCheck.max >= range.max) {
+        range.max = rangeCheck.max;
+        rangeCheck.deleted = true;
+        changed = true;
+      }
     }
   }
-    cleanedRanges = [...newCleaned];
-    console.log('Res: ', cleanedRanges);
 }
 
-//console.log(cleanedRanges);
+ranges = ranges.filter(x => !x.deleted).map(x => `${x.min}-${x.max}`);
 
-const totalValid = cleanedRanges.reduce((acc, x) => acc + (x.max - x.min + 1), 0);
+ranges = [...new Set(ranges)].map(x => ({min: +x.split('-')[0], max: +x.split('-')[1]}));
+
+console.table(ranges.sort((a,b) => a.min -b.min));
+
+const totalValid = ranges.reduce((acc, x) => acc + (x.max - x.min + 1), 0);
 
 console.log('Total valid ids: ', totalValid);
